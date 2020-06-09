@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>service_edu</module>
+        <module>aliyun_oss</module>
     </modules>
 
     <dependencies>
