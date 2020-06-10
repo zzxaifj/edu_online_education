@@ -1,7 +1,7 @@
 package com.test.datasource;
 
-import com.edu.eduservice.entity.EduTeacher;
-
+import com.alibaba.excel.EasyExcel;
+import com.edu.eduservice.entity.ExcelListener;
 /**
  * @description:
  * @author: zzx
@@ -10,16 +10,18 @@ import com.edu.eduservice.entity.EduTeacher;
  */
 public class Test {
 
-
     @org.junit.Test
     public void test(){
-        EduTeacher eduTeacher = new EduTeacher();
-        eduTeacher.setName("zhengzhaoxiang");
-        eduTeacher.setIntro("HaFo");
-        eduTeacher.setCareer("First");
-        eduTeacher.setLevel(1);
-        eduTeacher.setAvatar("url");
-        eduTeacher.setSort(1);
-        eduTeacher.setIsDeleted(0);
+        //1、设置写入文件夹地址和Excel文件名称
+        String filename = "E:\\Project\\write.xlsx";
+        //2、Excel 读取操作
+        EasyExcel.read(filename,DemoData.class,new ExcelListener()).sheet().doRead();
+//        //2、造数据
+//        DemoData demoData = new DemoData();
+//        demoData.setSno(1);
+//        demoData.setSname("zzx");
+//        List<DemoData> list = Arrays.asList(demoData);
+//        //3、调用 easyExcel 中的write 方法写数据
+//        EasyExcel.write(filename, DemoData.class).sheet("学生列表").doWrite(list);
     }
 }
