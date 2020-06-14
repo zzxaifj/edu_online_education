@@ -7,19 +7,21 @@ import com.edu.eduservice.entity.EduTeacher;
 import com.edu.eduservice.entity.vo.TeacherQuery;
 import com.edu.eduservice.service.EduTeacherService;
 import com.edu.tools.R;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 /**
- * <p>
- * 讲师 前端控制器
- * </p>
- *
- * @author zhengzhaoxiang
- * @since 2020-06-01
- */
+* @Description 讲师 前端控制器
+* @Author zhengzhaoxiang
+* @Date 2020/6/13 12:56
+* @Param
+* @Return
+*/
 @RestController
 @RequestMapping("/eduservice/teacher")
 @CrossOrigin
@@ -131,6 +133,19 @@ public class EduTeacherController {
             return R.error();
         }
     }
-
+    /**
+    * @Description 查询讲师表所有数据 rest风格
+    * @Author zhengzhaoxiang
+    * @Date 2020/6/13 12:57
+    * @Param []
+    * @Return com.edu.tools.R
+    */
+    @ApiOperation(value = "所有讲师列表")
+    @GetMapping("findAll")
+    public R findAllTeacher() {
+        //调用service的方法实现查询所有的操作
+        List<EduTeacher> list = eduTeacherService.list(null);
+        return R.ok().data("items",list);
+    }
 }
 
